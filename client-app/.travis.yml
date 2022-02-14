@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - 16.13.0
+script:
+  - "npm run build"
+  - "npm run test:nowatch"
+
+deplay:
+  provide: hroku
+  api_key:
+    secure: $HEROKU_TOKEN
+  app: book-store-web
