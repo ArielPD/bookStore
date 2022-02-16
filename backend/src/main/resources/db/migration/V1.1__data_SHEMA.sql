@@ -1,0 +1,1 @@
+INSERT INTO book(id, title, description, release_year) values ('047aaecc-8e9d-11ec-b909-0242ac120002', 'Ikigai', 'The Japanese secret to long and happy life', 2018);

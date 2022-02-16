@@ -1,0 +1,1 @@
+INSERT INTO book(id, title, description, release_year) values ('047aaecc-8e4d-11ec-b909-0242ac120099', 'test title', 'Test decription', 2018);
