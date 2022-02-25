@@ -17,7 +17,11 @@ import java.util.List;
 @Api(value = "Book Api", tags = "Book Api", produces = "application/json")
 @RestController
 @RequestMapping("api/v1/books")
-@CrossOrigin(origins = "http://localhost:3000", methods = {RequestMethod.OPTIONS, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}, allowedHeaders = "*", allowCredentials = "true")
+@CrossOrigin(
+        origins = "http://localhost:3000",
+        methods = {RequestMethod.OPTIONS, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE},
+        allowedHeaders = "*",
+        allowCredentials = "true")
 public class BookController {
 
     @Autowired
