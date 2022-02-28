@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import PropTypes from "prop-types";
+import BookListItem from "./BookListItem";
 import { bookStyles } from "./BookStyles";
 
 const propTypes = {
@@ -14,9 +15,9 @@ const propTypes = {
 export default function BookList({books}) {
 
     return(
-        <Box style={bookStyles.BookList}>
+        <Box style={bookStyles.BookList} ml={5}>
             {books.map((book) => (
-                <div key={book.id}>{book.id}</div>
+                <BookListItem key={book.id}  book={book}/>
             ))}
         </Box>
     )
