@@ -36,4 +36,9 @@ public class BookService {
         return book -> modelMapper.map(book, BookDto.class);
     }
 
+    public List<Book> getBooksNoDto() {
+        Iterable<Book> bookList = bookRepository.findAll();
+        return StreamSupport.stream(bookList.spliterator(), false).collect(Collectors.toList());
+    }
+
 }

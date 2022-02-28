@@ -1,6 +1,7 @@
 package com.apd.bookstore.controller;
 
 import com.apd.bookstore.dto.BookDto;
+import com.apd.bookstore.model.Book;
 import com.apd.bookstore.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -36,6 +37,12 @@ public class BookController {
     @GetMapping
     public ResponseEntity<List<BookDto>> getBooks(){
         List<BookDto> books = bookService.getBooks();
+        return ResponseEntity.ok(books);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Book>> getBooksList(){
+        List<Book> books = bookService.getBooksNoDto();
         return ResponseEntity.ok(books);
     }
 }
