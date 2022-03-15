@@ -21,7 +21,10 @@ describe('bookReducer', () => {
                 title: 'test title',
                 description: 'des',
                 releaseYear: 2022
-            }]    
+            }],
+            promise: {
+                isPending: false, isFulfilled: false, isErrorOcurred: false
+            }    
         })
     })
 })

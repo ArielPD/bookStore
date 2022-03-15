@@ -2,16 +2,17 @@ import React from "react";
 import renderWithRedux from "../../../util/testUtil";
 import BookContainer from "../BookContainer";
 import BookList from "../BookList";
-import { jsxEmptyExpression } from "@babel/types";
+import getBooksAction from "../../../module/book/bookAction";
 
 jest.mock('../BookList');
+jest.mock("../../../module/book/bookAction");
 describe('BookContainer', () => {
 
     beforeAll(() => {
         BookList.mockImplementation(() => <div>mock booklist comp</div>);
     })
 
-    it('should render with without error', () => {
+    it('should render without error', () => {
         const books = [{
             id: 1,
             title: 'test title',
@@ -19,14 +20,26 @@ describe('BookContainer', () => {
             releaseYear: 2022
         }];
 
-        renderWithRedux(<BookContainer />, {
-            initialState: {
-                bookReducer: {
-                    books
-                }
-            }
-        })
+        getBooksAction.mockImplementation(() => ({ type : 'BOOKLIST', payload: books}));
+
+        renderWithRedux(<BookContainer />, {});
 
         expect(BookList).toHaveBeenCalledWith({books}, {});
-    })
+    });
+
+    it('should show loader when isPening true', () => {
+        getBooksAction.mockImplementation(() => ({ 
+            type : 'BOOKLISTPENDING',
+        }));
+        const { getByTestId } =  renderWithRedux(<BookContainer />, {});
+        expect(getByTestId('book-loader')).toBeInTheDocument();
+    });
+
+    it('should show error when error ocurred', () => {
+        getBooksAction.mockImplementation(() => ({ 
+            type : 'BOOKLISTERROR',
+        }));
+        const { getByTestId } =  renderWithRedux(<BookContainer />, {});
+        expect(getByTestId('book-error-message')).toBeInTheDocument();
+    });
 });

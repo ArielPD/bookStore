@@ -41,4 +41,10 @@ public class BookService {
         return StreamSupport.stream(bookList.spliterator(), false).collect(Collectors.toList());
     }
 
+    public List<BookDto> getBooksByTitle(String bookTitle) {
+        List<Book> booksByTitle = bookRepository.findBookByTitleIgnoreCases(bookTitle);
+        return booksByTitle.stream()
+                .map(convertBookModelToBookDto())
+                .collect(Collectors.toList());
+    }
 }

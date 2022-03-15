@@ -45,4 +45,10 @@ public class BookController {
         List<Book> books = bookService.getBooksNoDto();
         return ResponseEntity.ok(books);
     }
+
+    @GetMapping("/{title}")
+    public ResponseEntity<List<BookDto>> getBooksByTitle(@PathVariable("title") String title) {
+        List<BookDto> booksByTitle = bookService.getBooksByTitle(title.toLowerCase());
+        return ResponseEntity.ok(booksByTitle);
+    }
 }

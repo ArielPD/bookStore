@@ -31,4 +31,13 @@ public class BookControllerTest {
         //assertThat(listofBooks.length).isEqualTo(2);
     }
 
+    @Test
+    //@Sql(scripts = {"classpath:InsertInitialBookRecordForTest.sql"})
+    void ShouldReturnOneBookWhenCalledWithTestTitle() {
+        BookDto[] listofBooks = testRestTemplate.getForObject("http://localhost:" + port + "/api/v1/books/test", BookDto[].class);
+
+        assertThat(listofBooks).isNotNull();
+        //assertThat(listofBooks.length).isGreaterThanOrEqualTo(1);
+    }
+
 }
