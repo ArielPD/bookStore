@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import reduxThunk from 'redux-thunk';
 import axios from 'axios';
-import getBooksAction from '../bookAction';
+import { getBooksAction } from '../bookAction';
 import { jsxEmptyExpression } from '@babel/types';
 
 jest.mock('axios');
